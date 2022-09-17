@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Car {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	private String brand, model, color, registerNumber;
@@ -18,8 +18,11 @@ public class Car {
 		return id;
 	}
 
-	public Car(long id, String brand, String model, String color,
-			String registerNumber, int year, int price) {
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Car(long id, String brand, String model, String color, String registerNumber, int year, int price) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -29,16 +32,10 @@ public class Car {
 		this.year = year;
 		this.price = price;
 	}
-	
-	
 
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getBrand() {
