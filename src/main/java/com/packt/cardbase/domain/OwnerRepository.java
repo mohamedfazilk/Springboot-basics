@@ -1,0 +1,7 @@
+package com.packt.cardbase.domain;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface OwnerRepository extends CrudRepository<Owner, Long>{
+
+}
