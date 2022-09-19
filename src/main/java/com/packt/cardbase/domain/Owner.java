@@ -1,9 +1,16 @@
 package com.packt.cardbase.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Owner {
@@ -12,8 +19,23 @@ public class Owner {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ownerid;
 	private String firstname, lastname;
-	
-	
+
+	// The @OneToMany annotation has two attributes that we are using. The cascade
+//	attribute defines how cascading affects the entities in the case of deletions or
+//	updates. The ALL attribute setting means that all operations are cascaded.
+
+	@OneToMany(cascade =CascadeType.ALL, mappedBy ="owner")
+	private List<Car> cars;
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+		
+		
+	}
 
 	public Owner() {
 		super();
