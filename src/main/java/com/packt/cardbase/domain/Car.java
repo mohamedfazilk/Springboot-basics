@@ -1,9 +1,12 @@
 package com.packt.cardbase.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Car {
@@ -13,6 +16,23 @@ public class Car {
 
 	private String brand, model, color, registerNumber;
 	private int year, price;
+
+	
+	// In our case, the lazy strategy means that when the owner is fetched
+//	from the database, all the cars associated with the owner will be fetched when
+//	needed. Eager means that the cars will be fetched immediately by the owner.
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "owner")
+	private Owner owner;
+
+	public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
 
 	public long getId() {
 		return id;
