@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.stereotype.Service;
+
 @Entity
 public class Car {
 	@Id
@@ -42,7 +44,8 @@ public class Car {
 		this.id = id;
 	}
 
-	public Car(long id, String brand, String model, String color, String registerNumber, int year, int price) {
+	public Car(long id, String brand, String model, String color
+			, String registerNumber, int year, int price, Owner owner) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -51,6 +54,7 @@ public class Car {
 		this.registerNumber = registerNumber;
 		this.year = year;
 		this.price = price;
+		this.owner =  owner;
 	}
 
 	public Car() {

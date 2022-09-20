@@ -11,8 +11,10 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 @Entity
+@Repository
 public class Owner {
 
 	@Id
