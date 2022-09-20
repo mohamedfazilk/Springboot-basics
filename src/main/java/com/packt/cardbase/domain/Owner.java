@@ -13,8 +13,12 @@ import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Repository
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Owner {
 
 	@Id
@@ -26,6 +30,7 @@ public class Owner {
 //	attribute defines how cascading affects the entities in the case of deletions or
 //	updates. The ALL attribute setting means that all operations are cascaded.
 
+	@JsonIgnore
 	@OneToMany(cascade =CascadeType.ALL, mappedBy ="owner")
 	private List<Car> cars;
 

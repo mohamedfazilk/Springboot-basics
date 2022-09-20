@@ -10,7 +10,10 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})	
 public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +26,7 @@ public class Car {
 	// In our case, the lazy strategy means that when the owner is fetched
 //	from the database, all the cars associated with the owner will be fetched when
 //	needed. Eager means that the cars will be fetched immediately by the owner.
-
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "owner")
 	private Owner owner;
