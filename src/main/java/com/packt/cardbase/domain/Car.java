@@ -44,10 +44,10 @@ public class Car {
 		this.id = id;
 	}
 
-	public Car(long id, String brand, String model, String color
+	public Car( String brand, String model, String color
 			, String registerNumber, int year, int price, Owner owner) {
 		super();
-		this.id = id;
+	
 		this.brand = brand;
 		this.model = model;
 		this.color = color;
