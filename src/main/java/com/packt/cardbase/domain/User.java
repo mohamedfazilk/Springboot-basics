@@ -29,9 +29,9 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Long id, String username, String password, String role) {
+	public User( String username, String password, String role) {
 		super();
-		this.id = id;
+
 		this.username = username;
 		this.password = password;
 		this.role = role;

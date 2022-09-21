@@ -14,6 +14,7 @@ import com.packt.cardbase.domain.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
 	@Autowired
 	private UserRepository userrepository;
 

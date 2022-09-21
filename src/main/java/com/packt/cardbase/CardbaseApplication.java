@@ -2,7 +2,6 @@ package com.packt.cardbase;
 
 import java.util.Arrays;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import com.packt.cardbase.domain.Car;
 import com.packt.cardbase.domain.CarRepository;
 import com.packt.cardbase.domain.Owner;
 import com.packt.cardbase.domain.OwnerRepository;
+import com.packt.cardbase.domain.User;
+import com.packt.cardbase.domain.UserRepository;
 
 @SpringBootApplication
 public class CardbaseApplication implements CommandLineRunner {
@@ -22,7 +23,12 @@ public class CardbaseApplication implements CommandLineRunner {
 
 	@Autowired
 	private CarRepository repository;
+
+	@Autowired
 	private OwnerRepository orepository;
+
+	@Autowired
+	private UserRepository userrepository;
 
 	public static void main(String[] args) {
 
@@ -32,12 +38,13 @@ public class CardbaseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		userrepository.save(new User("user", "$2a$12$Kxvwn/WD.HBSQhuLsGfMj.o3qO5z5ICZAOmR77zsEfPu9H6cuGryi", "USER"));
+		userrepository.save(new User("admin", "4y0h9WnLw/TjWXpwK9EZ4D7WCZaB9s/2U/sPcnup1do=", "ADMIN"));
+	}
 	
-		 // Add owner objects and save these to db
-		
-		
-		
+
+		// Add owner objects and save these to db
+
 //		Owner owner1 = new Owner(1,"jhon", "jhonson");
 //		Owner owner2 = new Owner(2,"Mary" , "Robinson");
 //		 orepository.saveAll(Arrays.asList(owner1,owner2));
@@ -55,6 +62,9 @@ public class CardbaseApplication implements CommandLineRunner {
 //			 logger.info(car.getBrand() + "" +car.getModel());
 //			 }
 
-	}
+		// Username: user, password: user
+	
+
+
 
 }
