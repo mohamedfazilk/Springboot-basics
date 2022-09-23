@@ -24,6 +24,9 @@ import com.packt.cardbase.service.UserDetailsServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	private AuthenticationFilter authenticationFilter;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
