@@ -49,9 +49,9 @@ public class Owner {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Owner(long ownerid, String firstname, String lastname) {
+	public Owner( String firstname, String lastname) {
 		super();
-		this.ownerid = ownerid;
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
