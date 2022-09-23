@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.packt.cardbase.service.UserDetailsServiceImpl;
 
@@ -27,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private AuthenticationFilter authenticationFilter;
+	
+	@Autowired
+	private AuthEntryPoint  exceptionHandler;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -57,6 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.POST, "/login")
 		.permitAll()
 		// All other requests are secured
-		.anyRequest().authenticated();
+		.anyRequest().authenticated().and()
+		 .exceptionHandling()
+		 .authenticationEntryPoint(exceptionHandler).and()
+		.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }
